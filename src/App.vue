@@ -76,33 +76,33 @@ function queryTicket() {
   <ElCard>
     <ElForm ref="RefQueryFrom" :model="query" :rules="queryRules" label-width="90px">
       <ElRow>
-        <ElCol :span="2">
+        <ElCol :span="2" style="min-width: 150px">
           <ElFormItem prop="type" label-width="0">
             <ElRadio v-model="query.type" label="dc">单程</ElRadio>
             <ElRadio v-model="query.type" label="wf">往返</ElRadio>
           </ElFormItem>
         </ElCol>
-        <ElCol :span="4">
+        <ElCol :span="4" style="min-width: 300px">
           <ElFormItem prop="from" label="出发地">
             <ElSelectV2 v-model="query.from" :options="options" filterable />
           </ElFormItem>
         </ElCol>
-        <ElCol :span="4">
+        <ElCol :span="4" style="min-width: 300px">
           <ElFormItem prop="to" label="目的地">
             <ElSelectV2 v-model="query.to" :options="options" filterable />
           </ElFormItem>
         </ElCol>
-        <ElCol :span="4">
+        <ElCol :span="4" style="min-width: 300px">
           <ElFormItem prop="fromDate" label="出发日">
             <ElDatePicker v-model="query.fromDate" value-format="YYYY-MM-DD" />
           </ElFormItem>
         </ElCol>
-        <ElCol :span="4">
+        <ElCol :span="4" style="min-width: 300px">
           <ElFormItem prop="toDate" label="返程日">
             <ElDatePicker v-model="query.toDate" value-format="YYYY-MM-DD" />
           </ElFormItem>
         </ElCol>
-        <ElCol :span="4">
+        <ElCol :span="4" style="min-width: 200px">
           <ElFormItem>
             <ElButton type="warning" @click="queryTicket">查询</ElButton>
           </ElFormItem>
