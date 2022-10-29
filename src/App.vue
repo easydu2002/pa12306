@@ -191,6 +191,8 @@ function queryTicket() {
       <ElTableColumn prop="remark" label="备注" align="center" />
     </ElTable>
   </ElCard>
+
+  <img style="position:fixed;bottom: 20px;right:20px;" src="https://api.netlify.com/api/v1/badges/c4775f17-f9c9-4d77-b715-f9c333824985/deploy-status" alt="">
 </template>
 
 <style scoped>
