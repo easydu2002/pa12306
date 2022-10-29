@@ -1,8 +1,9 @@
 
 
 import Cookies from 'js-cookie'
+import { request } from '../util/request'
 
-interface TicketQuery {
+export interface TicketQuery {
     type: 'dc' | 'wf',
     // userType: 'dc',
     from: string,
@@ -33,5 +34,5 @@ export const getTicket = function(query: TicketQuery) {
     // Cookies.set('current_captcha_type', 'Z')
     // Cookies.set('RAIL_DEVICEID', 'k8jdE1yfggIqV08RCerFaYzF3jZYQH5aCLOWHcEw09wDmoZqSUJ67TSaVilFNr9I_sw-w64eVV-sc-z4FSp_YIExOwVVe5PAXA9nGeOJKKII2ngYiE8Mg-uZYa2eAVAvOWgiGLo834rWUYeMlAkRj_0APoRM0bZN')
 
-    return fetch(`/12306/otn/leftTicket/query?leftTicketDTO.train_date=${query.fromDate}&leftTicketDTO.from_station=${query.from}&leftTicketDTO.to_station=${query.to}&purpose_codes=ADULT`).then(res => res.json())
+    return request(`/otn/leftTicket/query?leftTicketDTO.train_date=${query.fromDate}&leftTicketDTO.from_station=${query.from}&leftTicketDTO.to_station=${query.to}&purpose_codes=ADULT`).then(res => res.json())
 }

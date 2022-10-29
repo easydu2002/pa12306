@@ -7,7 +7,6 @@ export const useStation = function() {
 
     const list = ref([])
     const options = ref([])
-    const mapping = ref(new Map())
 
     onBeforeMount(async () => {
         const stationList = localStorage.getItem(StationCacheKey)
@@ -21,10 +20,12 @@ export const useStation = function() {
         list.value = txts.reduce((result, item, key) => {
             const last = result.at(-1)
             if(!(key % 5)) {
-                last && options.value.push({value: last[2], label: last[1] })
-                last && mapping.value.set(last[2], last)
+                // @ts-ignore
+                last && options.value.push({value: last[2], label: last[1], searchStr: last.join('') })
+                // @ts-ignore
                 result.push([item])
             }else {
+                // @ts-ignore
                 last.push(item)
             }
             // localStorage.setItem(StationCacheKey, result.join('!!'))
@@ -32,5 +33,5 @@ export const useStation = function() {
         }, [])
     })
 
-    return {list, options, mapping}
+    return {list, options}
 }

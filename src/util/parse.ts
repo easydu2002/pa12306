@@ -1,6 +1,6 @@
 
 
-interface TicketInfo {
+export interface Ticket {
     /**
      * 车次
      */
@@ -90,13 +90,16 @@ interface TicketInfo {
  * Gtck177KeVVS%2BHAeQZBimmi4F6%2BqAvo2YELjxSaI2mv8rPaUp2pjsGDbSXS9kbp5eFYzRkPhMW1D%0ATGajieRmLsOp3KJOyvtvDNLLlwBKuKluOujmcYFWZnY%2BupvnKYZlrwaHiE%2B%2Bs0G6ecJjWkDphQJ4%0AxFBn5SNkfyGWzBEAYGxn7Eqz1AxVdq51tbR2DwcSulLwtVkwMLSPcBwkHcWcu9ycYYqstl23zHES%0Az%2BuHqba%2BHiwsKYtRVZrB5U1c92j59bju3lKJFTua%2BdfbWv7ia%2FSzy4c7Tyn0heG9e3UKtUjv1sgY%0A7aEvO3Vt4W%2B3WdlO|预订|240000G12113|G121|VNP|AOH|VNP|AOH|10:05|15:42|05:37|Y|3Ua5cVGMieCNmzPYylTzxvRt1IM%2BO7rJ8t%2FUVc%2BZvxTSGbqU|20221029|3|P2|01|09|1|0|||||||||||有|有|7||O0M090|OM9|1|0||O059800021M1006000219215800007|0|||||1|#1#0#0#z||7
  * 
  */
-export const parserTicket = function(str: string): TicketInfo {
+export const parserTicket = function(str: string, map: [][]): Ticket {
     const items = str.split('|')
 
+    const [from, to] = Object.entries(map)
     return {
         number: items[3] || '--',
-        from: items[4] || '--',
-        to: items[5] || '--',
+        // @ts-ignore
+        from: from[1] || '--',
+        // @ts-ignore
+        to: to[1] || '--',
         fromDate: items[8] || '--',
         toDate: items[9] || '--',
         totalTime: items[10] || '--',
@@ -110,7 +113,7 @@ export const parserTicket = function(str: string): TicketInfo {
         ruanSeat: items[24] || '--',
         yingSeat: items[29] || '--',
         stand: items[26] || '--',
-        other: items[3] || '--',
+        other: '--',
         remark: items[1] || '--'
     }
 }
