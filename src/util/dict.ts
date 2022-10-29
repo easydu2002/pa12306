@@ -18,7 +18,7 @@ export const useStation = function() {
         const txts = txt.split('|')
         txts[0] = txts[0].slice(txts[0].indexOf('@'))
         list.value = txts.reduce((result, item, key) => {
-            const last = result.at(-1)
+            const last = result[result.length - 1]
             if(!(key % 5)) {
                 // @ts-ignore
                 last && options.value.push({value: last[2], label: last[1], searchStr: last.join('') })
